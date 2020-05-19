@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-deployment
+  labels:
+    app: my-voting-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-voting-app
+      tier: worker
+  template:
+    metadata:
+      name: worker-app
+      labels:
+        app: my-voting-app
+        tier: worker
+    spec:
+      containers:
+        - image: dockersamples/examplevotingapp_worker
+          name: worker-app
+
+
+
+
